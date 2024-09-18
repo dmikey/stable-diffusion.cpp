@@ -32,3 +32,12 @@ jobs:
       - name: Build using container2wasm
         run: |
           c2w ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.tag_name }} -o sd.wasm
+              - name: upload artifact
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: sd.wasm
+          asset_name: sd.wasm
+          asset_content_type: application/binary
