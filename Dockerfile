@@ -8,6 +8,7 @@ WORKDIR /sd.cpp
 
 COPY . .
 
+RUN git submodule init && git submodule update
 RUN mkdir build && cd build && cmake .. && cmake --build . --config Release
 
 FROM ubuntu:$UBUNTU_VERSION as runtime
