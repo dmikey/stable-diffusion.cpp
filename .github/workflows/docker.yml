@@ -27,8 +27,8 @@ jobs:
         run: |
           wget https://github.com/ktock/container2wasm/releases/download/v0.6.5/container2wasm-v0.6.5-linux-amd64.tar.gz
           tar -xzf container2wasm-v0.6.5-linux-amd64.tar.gz
-          chmod +x container2wasm-v0.6.5-linux-amd64/c2w
-          sudo mv container2wasm-v0.6.5-linux-amd64/c2w /usr/local/bin/c2w
+          chmod +x c2w
+          sudo mv c2w /usr/local/bin/c2w
       - name: Build using container2wasm
         run: |
           c2w ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.tag_name }} -o sd.wasm
